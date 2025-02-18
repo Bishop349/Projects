@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NBA Drag & Drop Game</title>
+        <style>
+            body { 
+                font-family: Arial, sans-serif; 
+                text-align: center; 
+            }
+    
+            .container { 
+                display: flex; 
+                justify-content: center; 
+                flex-wrap: wrap; 
+                margin-top: 20px; 
+            }
+            .submit-button { 
+    margin-top: 20px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    font-weight: bold;
+    color: white;  /* White text for contrast */
+    background-color: blue; /* Blue background */
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+.box:hover { 
+    background-color: green; 
+}
+.submit-button:hover {
+    background-color: darkblue; /* Darker blue on hover */
+}
+            .number-container, .container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns per row */
+    grid-template-rows: repeat(2, auto); /* 2 rows */
+    gap: 15px; /* Space between items */
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    max-width: 800px; /* Adjust width for better spacing */
+    margin-left: auto;
+    margin-right: auto;
+}
+.striped-box {
+    display: block; 
+    width: 100%;  /* Full width of the screen */
+    padding: 15px 0; /* More vertical padding for better visibility */
+    font-size: 22px; 
+    font-weight: bold;
+    color: white; /* Text color for contrast */
+    background-color: green; /* Solid green background */
+    text-align: center;
+    margin: 0; /* Removes default margins */
+}
+.number {
+    font-size: 48px; /* Increase the font size */
+    font-weight: bold;
+    cursor: pointer;
+    background: none; /* Remove background */
+    border: none; /* Remove border */
+    display: inline-block; /* Keep inline positioning */
+    padding: 5px; /* Add slight spacing */
+}
+    
+            .box { 
+                width: 160px; /* Slightly larger to accommodate images */
+                height: 200px; /* Adjusted height */
+                background-color: lightgray; 
+                padding: 10px; 
+                display: flex; 
+                flex-direction: column; 
+                align-items: center; 
+                justify-content: center; 
+            }
+    
+            .box img { 
+    width: 100%;  /* Makes image fill the container dynamically */
+    max-width: 140px;  /* Prevents excessive stretching */
+    height: auto; /* Maintains the correct aspect ratio */
+    object-fit: contain; /* Prevents cropping while keeping original proportions */
+    border-radius: 12px; /* Softer, rounded edges */
+    border: 2px solid #000; /* Optional: adds a border for better visibility */
+}
+
+    
+.correct { 
+    background-color: green; /* Entire box turns green */
+    border-color: darkgreen;
+    color: white; /* Ensures text remains visible */
+}
+
+.incorrect { 
+    background-color: red; /* Entire box turns red */
+    border-color: darkred;
+    color: white; /* Ensures text remains visible */
+}
+    
+            .submit-button { 
+                margin-top: 20px; 
+                padding: 10px 20px; 
+                font-size: 16px; 
+            }
+        </style>
+    </head>
+    
+    <title>NBA Drag & Drop Game</title>
+    
+</head>
+
+<body>
+
+    <h2 class="striped-box">Drag the correct scoring average to the right player.</h2>
+
+
+<div class="number-container">
+    <span id="number1" class="number" draggable="true">23.8</span>
+    <span id="number2" class="number" draggable="true">34.1</span>
+    <span id="number3" class="number" draggable="true">26.3</span>
+    <span id="number4" class="number" draggable="true">30.1</span>
+    <span id="number5" class="number" draggable="true">27.3</span>
+    <span id="number6" class="number" draggable="true">24.2</span>
+    <span id="number7" class="number" draggable="true">25.1</span>
+    <span id="number8" class="number" draggable="true">25.6</span>
+    <span id="number9" class="number" draggable="true">15.7</span>
+    <span id="number10" class="number" draggable="true">22.9</span>
+</div>
+
+<div class="container">
+    <div class="box" data-correct-number="23.8">
+        <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png" alt="Lebron">
+        <span class="name">LeBron James</span>
+    </div>
+    <div class="box" data-correct-number="34.1">
+        <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/203507.png" alt="Giannis">
+        <span class="name">Giannis Antetokounmpo</span>
+    </div>
+    <div class="box" data-correct-number="26.3">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4594268.png" alt="Edwards">
+        <span class="name">Anthony Edwards</span>
+    </div>
+    <div class="box" data-correct-number="30.1">
+        <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/203999.png" alt="Jokic">
+        <span class="name">Nikola Jokic</span>
+    </div>
+    <div class="box" data-correct-number="27.3">
+        <img src="https://a.espncdn.com/i/headshots/nba/players/full/3202.png" alt="KD">
+        <span class="name">Kevin Durant</span>
+    </div>
+    <div class="box" data-correct-number="24.2">
+        <img src="https://a.espncdn.com/i/headshots/nba/players/full/6442.png" alt="Kyrie">
+        <span class="name">Kyrie Irving</span>
+    </div>
+    <div class="box" data-correct-number="25.1">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3136195.png" alt="Kat">
+        <span class="name">Karl-Anthony Towns</span>
+    </div>
+    <div class="box" data-correct-number="25.6">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/6583.png" alt="AD">
+        <span class="name">Anthony Davis</span>
+    </div>
+    <div class="box" data-correct-number="15.7">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066261.png" alt="Bam">
+        <span class="name">Bam Adebayo</span>
+    </div>
+    <div class="box" data-correct-number="22.9">
+        <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3975.png" alt="Steph">
+        <span class="name">Stephen Curry</span>
+    </div>
+</div>
+
+<div class="submit-button-container">
+    <button class="submit-button" onclick="submitResults()">Submit</button>
+</div>
+
+<script>
+let userId = Math.floor(Math.random() * 1000000);
+let correctMatches = 0;
+document.addEventListener("DOMContentLoaded", function () {
+    let numberContainer = document.querySelector(".number-container");
+    let numbers = Array.from(numberContainer.children);
+
+    // Shuffle numbers using Fisher-Yates algorithm
+    for (let i = numbers.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+    }
+
+    // Append shuffled numbers back into the container
+    numberContainer.innerHTML = "";
+    numbers.forEach(num => numberContainer.appendChild(num));
+});
+document.querySelectorAll(".number").forEach(num => {
+    num.addEventListener("dragstart", function(event) {
+        event.dataTransfer.setData("text", event.target.id);
+    });
+});
+
+document.querySelectorAll(".box").forEach(box => {
+    box.addEventListener("dragover", function(event) {
+        event.preventDefault();
+    });
+
+    box.addEventListener("drop", function(event) {
+        event.preventDefault();
+        let draggedId = event.dataTransfer.getData("text");
+        let draggedElement = document.getElementById(draggedId);
+        let correctNumber = this.getAttribute("data-correct-number");
+
+        if (!this.hasChildNodes() || this.children.length === 2) {
+            this.appendChild(draggedElement);
+            draggedElement.style.cursor = "default";
+            draggedElement.draggable = false;
+        }
+    });
+});
+
+function submitResults() {
+    correctMatches = 0;
+
+    document.querySelectorAll(".box").forEach(box => {
+        let correctNumber = box.getAttribute("data-correct-number");
+        let placedNumber = box.querySelector(".number") ? box.querySelector(".number").textContent : null;
+
+        if (placedNumber === correctNumber) {
+            box.classList.add("correct");
+            box.classList.remove("incorrect");
+            correctMatches++;
+        } else {
+            box.classList.add("incorrect");
+            box.classList.remove("correct");
+        }
+    });
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "save_results2.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            alert("Results saved! You got " + correctMatches + " correct.");
+        }
+    };
+    xhr.send("userId=" + userId + "&score=" + correctMatches);
+}
+</script>
+
+</body>
+</html>
