@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movie Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Movie Quiz</h1>
+      <p>Test your general movie knowledge with three quick questions.</p>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash">
+            {% for message in messages %}
+              <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <form action="{{ url_for('submit') }}" method="post">
+        <label for="name">Your name</label>
+        <input id="name" name="name" placeholder="Enter your name" required />
+
+        <div class="question">
+          <p>1. In Oppenheimer (2023), directed by Christopher Nolan, which actor played the lead role of J. Robert Oppenheimer?</p>
+          <label><input type="radio" name="q1" value="A" required /> Robert Downey Jr.</label>
+          <label><input type="radio" name="q1" value="B" /> Cillian Murphy</label>
+          <label><input type="radio" name="q1" value="C" /> Matt Damon</label>
+        </div>
+
+        <div class="question">
+          <p>2. In Dune: Part Two (2024), what private Fremen name is given to Paul Atreides, which translates to "the strength of the base of the pillar"?</p>
+          <label><input type="radio" name="q2" value="A" required /> Lisan al-Gaib</label>
+          <label><input type="radio" name="q2" value="B" /> Muad'Dib</label>
+          <label><input type="radio" name="q2" value="C" /> Usul</label>
+        </div>
+
+        <div class="question">
+          <p>3. Which 2022 sci-fi horror film directed by Jordan Peele centers on two siblings attempting to capture footage of an unidentified flying object above their California horse ranch?</p>
+          <label><input type="radio" name="q3" value="A" required /> Nope</label>
+          <label><input type="radio" name="q3" value="B" /> Us</label>
+          <label><input type="radio" name="q3" value="C" /> Get Out</label>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+      </form>
+
+      <p><a href="{{ url_for('results') }}">View recent results</a></p>
+    </main>
+  </body>
+</html>

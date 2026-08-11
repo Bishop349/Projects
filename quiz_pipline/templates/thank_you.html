@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movie Quiz Submitted</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Thanks, {{ name }}!</h1>
+      <p>Your movie quiz was saved successfully.</p>
+      <p>Your score: {{ score }} / {{ total }}</p>
+      <p><a href="{{ url_for('index') }}">Take the quiz again</a></p>
+      <p><a href="{{ url_for('results') }}">See recent submissions</a></p>
+    </main>
+  </body>
+</html>

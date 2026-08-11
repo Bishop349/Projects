@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recent Movie Quiz Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Recent movie quiz results</h1>
+      {% if results %}
+        <ul class="results-list">
+          {% for row in results %}
+            <li>
+              <strong>{{ row[0] }}</strong> scored {{ row[1] }}/{{ row[2] }} on {{ row[3] }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No results yet.</p>
+      {% endif %}
+      <p><a href="{{ url_for('index') }}">Back to quiz</a></p>
+    </main>
+  </body>
+</html>
